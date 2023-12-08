@@ -1,0 +1,24 @@
+---
+component: "GridLayout"
+---
+<div class="whitespace-nowrap">
+  <slot/>
+</div>
+
+<style>
+.grid-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem; /* Adjust the gap between items */
+  padding: 1rem;
+  transition: transform 0.5s ease; /* Animation duration and easing */
+}
+
+/* Responsive breakpoints for the grid */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-auto-flow: row; /* Change to a vertical layout on smaller screens */
+    overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+  }
+}
+</style>

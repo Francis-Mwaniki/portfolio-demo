@@ -1,0 +1,64 @@
+---
+import Button from "./Button.astro";
+
+---
+<div class="
+ hover:opacity-100 opacity-80 hover:bg-gray-200  rounded-lg bg-white p-3 transition-all duration-500 ease-in-out
+">
+  <slot/>
+
+ 
+  </div>
+  <div class="flex justify-center items-center mx-auto mt-8">
+    <Button>
+        <a href="/" 
+        class="text-white font-bold py-2 px-4 rounded inline-flex items-center"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z" />
+          </svg>
+          
+            <span class="ml-2">Back to Home</span>
+        </a>
+    </Button>
+</div>
+
+<style>
+.grid-container {
+  display: grid;
+  /* Define the number of columns based on screen sizes */
+  gap: 1rem; /* Adjust the gap between cards */
+  padding: 1rem;
+}
+
+/* Style for each card */
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive breakpoints for the grid */
+@media (min-width: 640px) {
+  .grid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+</style>

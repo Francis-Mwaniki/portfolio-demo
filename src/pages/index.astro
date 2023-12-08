@@ -1,0 +1,77 @@
+---
+// Component Imports
+import Button from '../components/Button.astro';
+import GridSkills from '../components/GridSkills.astro';
+import SocialMedia from '../components/SocialMedia.astro';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Francis Mwaniki</title>
+	</head>
+
+	<body>
+		<div class="grid place-items-center min-h-screen content-center">
+			<main class="text-center my-2">
+				<h1 class="text-4xl font-bold">Francis Mwaniki</h1>
+				<p class="text-xl">Software Developer</p>
+				<p class="text-sm italic">"I build things for the web"
+				</p>
+				<p class="text-sm italic">
+					- 
+					simplictic, yet powerful statement that describes my passion for web development.
+				</p>
+				<div class="mt-8 mb-3">
+					<img
+						class="rounded-lg w-64 h-48 mx-auto"
+						src="/franc.jpeg"
+						alt="Francis Mwaniki"
+					/>
+				</div>
+				<div class="flex justify-center space-x-4 items-center mx-auto gap-x-1">
+					<Button>
+						<a href="/" 
+						class="text-white font-bold py-2 px-4 rounded inline-flex items-center"
+						>
+						<span class="ml-2">
+							Blog
+						</span>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+						  </svg>
+						  
+						  
+							
+						</a>
+					</Button>
+					<Button>
+						<a href="/projects" 
+						class="text-white font-bold py-2 px-4 rounded inline-flex items-center"
+						>
+						<span class="ml-2">
+							 Projects
+						</span>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+						  </svg>
+						  
+						  
+							
+						</a>
+					</Button>
+				</div>
+				<GridSkills />
+				
+				<div class="my-4" />
+					<SocialMedia />
+			</main>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,16 @@
+---
+import GridLayout from './Skill.astro'
+const skills = ['vue', 'nuxt', 'next', 'astro', 'tailwindcss', 'nodejs', 'nestjs', 'git']
+
+---
+<GridLayout>
+    <h2 class="text-2xl my-3 font-bold">Skills</h2>
+    <div class="grid sm:grid-cols-4 gap-4 bg-gray-200 p-4 rounded-lg grid-cols-2">
+        
+        {skills.map((skill) => (
+        <div class="flex flex-col items-center">
+            <span class="text-sm bg-gray-300 p-2 rounded-lg min-w-[100px] cursor-pointer">{skill}</span>
+        </div>
+        ))}
+    </div>
+</GridLayout>
