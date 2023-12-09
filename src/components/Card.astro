@@ -57,4 +57,19 @@ import Button from "./Button.astro";
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+.roll-back{
+        transition: all 0.3s ease-in-out;
+    }
+    .roll-back:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px transparent;
+        transition: all 0.3s ease-in-out;
+    }
+    .roll-back:hover svg{
+        stroke: #f5690b;
+    }
+    .roll-back svg{
+        stroke: #f59e0b;
+        transition: all 0.3s ease-in-out;
+    }
 </style>
