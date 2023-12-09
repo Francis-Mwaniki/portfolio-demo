@@ -2,7 +2,7 @@
 import Card from '../components/Card.astro'
 title: 'Projects'
 description: 'A list of projects I have worked on'
-
+let isLoading = false
 const projects = [
   { title: 'Vue Projects', description: 'see all projects' },
   { title: 'Nuxt Projects', description: 'see all projects' },
@@ -12,7 +12,60 @@ const projects = [
   { title: 'NestJS Project', description: 'see all projects' },
 
 ]
+
+
+
+
 ---
+
+<script define:vars={projects} lang="ts">
+  
+// document.getElementById('routing')?.addEventListener('click', () => {
+//        isLoading = true
+//          setTimeout(() => {
+//             isLoading = false
+//             window.location.href = '/projects'
+//          }, 3000)
+//     })
+
+
+const getIndividualProject = (_project) => {
+    isLoading = true
+    setTimeout(() => {
+        isLoading = false
+        /* obserse if it on the client then use window */
+        if(_project.title === 'Vue Projects'){
+            console.log(_project.title)
+            window.location.href = 'vue'
+
+        }
+        if(_project.title === 'Nuxt Projects'){
+             console.log(_project.title);
+             
+            window.location.href = 'nuxt'
+        }
+        if(_project.title === 'Next.js Projects'){
+            console.log(_project.title);
+            
+            window.location.href = 'next'
+        }
+        if(_project.title === 'Astro Projects'){
+            console.log(_project.title);
+            window.location.href = 'astro'
+        }
+        if(_project.title === 'Node.js Project'){
+            console.log(_project.title);
+            window.location.href = 'node'
+        }
+        if(_project.title === 'NestJS Project'){
+            console.log(_project.title);
+            window.location.href = 'nest'
+        }
+
+    }, 3000)
+}
+
+</script>
 <main class="max-w-5xl mx-auto my-5 p-2">
     <div>
         <h2 class="text-2xl font-bold text-center  my-2">Projects</h2>
@@ -20,13 +73,16 @@ const projects = [
 <Card>
    
     <div >
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-5xl mx-auto ">
+        <div class="grid grid-cols-1 gap-4  md:grid-cols-3 lg:grid-cols-4 max-w-5xl mx-auto ">
         {
             projects.map(project => (
-                <div class="p-4 bg-white  cursor-pointer shadow-lg hover:shadow-md rounded-lg hover:shadow-black">
+                <a   
+                 href={project.title === 'Vue Projects' ? 'vue' : project.title === 'Nuxt Projects' ? 'nuxt' : project.title === 'Next.js Projects' ? 'next' : project.title === 'Astro Projects' ? 'astro' : project.title === 'Node.js Project' ? 'node' : project.title === 'NestJS Project' ? 'nest' : '/projects' }
+                
+                 id="routing" class="p-4 bg-white  cursor-pointer shadow-lg hover:shadow-md rounded-lg hover:shadow-black rolling-bg-gradient">
                     <h3 class="text-lg font-bold">{project.title}</h3>
                     <p class="text-gray-600">{project.description}</p>
-                </div>
+                </a>
             ))
         }
         </div>
@@ -37,3 +93,98 @@ const projects = [
 </Card>
 </main>
 
+<style>
+    .rolling-color{
+        animation: rolling 5s infinite;
+    }
+    @keyframes rolling {
+        0%{
+            color: #f59e0b;
+        }
+        25%{
+            color: #10b981;
+        }
+        50%{
+            color: #3b82f6;
+        }
+        75%{
+            color: #ef4444;
+        }
+        100%{
+            color: #f59e0b;
+        }
+    }
+    .rolling-bg-gradient{
+        background: linear-gradient(90deg, #000000 0%, #535353 25%, #000000 50%, #000000 75%, #000000 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rolling 5s infinite;
+        transition: all 0.3s ease-in-out;
+
+    }
+    .rolling-bg-gradient:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px transparent;
+        animation: rolling 5s infinite;
+        transition: all 0.3s ease-in-out;
+
+    }
+    .rolling-bg-gradient:hover a{
+        color: #f5690b;
+    }
+    .rolling-bg-gradient a{
+        color: #f59e0b;
+    }
+    .rolling-bg-gradient a:hover{
+        color: #f5690b;
+    }
+    .rolling-bg-gradient a:hover svg{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient svg{
+        stroke: #f59e0b;
+        transition: all 0.3s ease-in-out;
+    }
+    .rolling-bg-gradient svg:hover{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient:hover svg{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient:hover svg:hover{
+        stroke: #f5690b;
+    }
+  
+
+
+    .smooth-ring{
+        transition: all 0.3s ease-in-out;
+        animation: rolling 5s infinite;
+    }
+    .smooth-ring:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px #e6e5e3;
+        animation: rolling 5s infinite;
+    }
+
+    @keyframes rolling {
+        0%{
+            color: #f59e0b;
+        }
+        25%{
+            color: #10b981;
+        }
+        50%{
+            color: #3b82f6;
+        }
+        75%{
+            color: #ef4444;
+        }
+        100%{
+            color: #f59e0b;
+        }
+    }
+
+
+</style>
