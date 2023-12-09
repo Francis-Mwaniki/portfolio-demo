@@ -1,0 +1,283 @@
+
+---
+const { post } = Astro.params
+
+export async function getStaticPaths() {
+  return [
+    { params: { post: 'vue'}},
+    { params: { post: 'react'}},
+    { params: { post: 'next'} },
+    { params: { post: 'nuxt'}},
+    { params: { post: 'nest'}},
+    { params: { post: 'node'} },
+    { params: { post: 'astro'}},
+  ]
+}
+
+const vuePosts = [
+  { title: 'Vue 3 is here!', description: 'Vue 3 is finally here!',param: post},
+  { title: 'Vue 3 is great!', description: 'Vue 3 is great!',param: post},
+  { title: 'Vue 3 is awesome!', description: 'Vue 3 is awesome!',param: post},
+
+]
+
+const reactPosts = [
+  { title: 'React is here!', description: 'React is finally here!',param: post},
+  { title: 'React is great!', description: 'React is great!',param: post},
+  { title: 'React is awesome!', description: 'React is awesome!',param: post},
+
+]
+
+const nextPosts = [
+  { title: 'Next is here!', description: 'Next is finally here!',param: post},
+  { title: 'Next is great!', description: 'Next is great!',param: post},
+  { title: 'Next is awesome!', description: 'Next is awesome!',param: post},
+
+]
+
+const nuxtPosts = [
+  { title: 'Nuxt is here!', description: 'Nuxt is finally here!',param: post},
+  { title: 'Nuxt is great!', description: 'Nuxt is great!',param: post},
+  { title: 'Nuxt is awesome!', description: 'Nuxt is awesome!',param: post},
+]
+
+const nestPosts = [
+    { title: 'Nest is here!', description: 'Nest is finally here!',param: post},
+    { title: 'Nest is great!', description: 'Nest is great!',param: post},
+    { title: 'Nest is awesome!', description: 'Nest is awesome!',param: post},
+    
+    
+
+]
+
+const nodePosts = [
+    { title: 'Node is here!', description: 'Node is finally here!',param: post},
+    { title: 'Node is great!', description: 'Node is great!',param: post},
+    { title: 'Node is awesome!', description: 'Node is awesome!',param: post},
+
+]
+
+const astroPosts = [
+    { title: 'Astro is here!', description: 'Astro is finally here!',param: post},
+    { title: 'Astro is great!', description: 'Astro is great!',param: post},
+    { title: 'Astro is awesome!', description: 'Astro is awesome!',param: post},
+
+]
+
+const posts = {
+  vue: vuePosts,
+  react: reactPosts,
+  next: nextPosts,
+  nuxt: nuxtPosts,
+  nest: nestPosts,
+  node: nodePosts,
+  astro: astroPosts,
+}
+
+const filteredPosts = (()=>{
+     if (post === 'vue') {
+    return vuePosts
+} else if (post === 'react') {
+    return reactPosts
+} else if (post === 'next') {
+    return nextPosts
+} else if (post === 'nuxt') {
+    return nuxtPosts
+} else if (post === 'nest') {
+    return nestPosts
+} else if (post === 'node') {
+    return nodePosts
+} else if (post === 'astro') {
+    return astroPosts
+} else {
+    return []
+}
+}) ()
+
+
+
+
+
+
+
+---
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <!-- go back  -->
+        <div class="flex items-center space-x-2 mb-4 roll-back cur">
+            <a href="/" class="text-gray-500 hover:text-gray-600 ">
+                <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <span class="text-gray-700">Back to home</span>
+        </div>
+        <h1 class="text-4xl font-bold mb-4">Project: {post}.js</h1>
+
+        <div class="grid sm:grid-cols-3 grid-cols-1 gap-4">
+
+           {
+                
+                filteredPosts.map((post, index) => (
+                    <div class="bg-white shadow-md rounded-lg px-8 cursor-text py-6 rolling-bg-gradient">
+                        <h2 class="text-gray-800 text-3xl font-semibold">{post.title}</h2>
+                        <p class="mt-2 text-gray-600">{post.description}</p>
+                        <div class="flex justify-between items-center gap-x-4 mt-4">
+                           <a
+                                href="#"
+                                class="text-xl font-medium text-indigo-500 cursor-pointer p-2"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+</svg>
+
+                            </a>
+                        
+                            <a
+                                href="#"
+                                class="text-xl font-medium text-indigo-500 cursor-pointer p-2"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+</svg>
+
+                            </a>
+                        </div>
+                    </div>
+                ))
+           }
+
+          
+        </div>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold mb-4">GitHub Section</h2>
+            <div class="flex items-center space-x-4">
+                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.88 8.16 6.84 9.49.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.51.46-3.13-.61-3.32-1.18-.11-.28-.59-1.18-1.01-1.42-.34-.18-.82-.62-.01-.63.76-.01 1.3.7 1.48 1  .87 1.49 2.26 1.07 2.81.82.09-.65.35-1.07.63-1.32-2.2-.25-4.51-1.11-4.51-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37 .2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.32 4.69-4.54 4.94.36.31 .68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .27.18.59.69.49A12 12 0 0 0 12 2Z" />
+                </svg>
+                <p class="text-gray-700">Check out our GitHub repository for more!</p>
+                <a href="https://www.github.com/Francis-Mwaniki" class="text-blue-500 hover:underline flex justify-center items-center gap-x-1"><span>GitHub</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                      
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<style>
+    .rolling-color{
+        animation: rolling 5s infinite;
+    }
+    @keyframes rolling {
+        0%{
+            color: #f59e0b;
+        }
+        25%{
+            color: #10b981;
+        }
+        50%{
+            color: #3b82f6;
+        }
+        75%{
+            color: #ef4444;
+        }
+        100%{
+            color: #f59e0b;
+        }
+    }
+    .rolling-bg-gradient{
+        background: linear-gradient(90deg, #000000 0%, #535353 25%, #000000 50%, #000000 75%, #000000 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: rolling 5s infinite;
+        transition: all 0.3s ease-in-out;
+
+    }
+    .rolling-bg-gradient:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px transparent;
+        animation: rolling 5s infinite;
+        transition: all 0.3s ease-in-out;
+
+    }
+    .rolling-bg-gradient:hover a{
+        color: #f5690b;
+    }
+    .rolling-bg-gradient a{
+        color: #f59e0b;
+    }
+    .rolling-bg-gradient a:hover{
+        color: #f5690b;
+    }
+    .rolling-bg-gradient a:hover svg{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient svg{
+        stroke: #f59e0b;
+        transition: all 0.3s ease-in-out;
+    }
+    .rolling-bg-gradient svg:hover{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient:hover svg{
+        stroke: #f5690b;
+    }
+    .rolling-bg-gradient:hover svg:hover{
+        stroke: #f5690b;
+    }
+  
+
+
+    .smooth-ring{
+        transition: all 0.3s ease-in-out;
+        animation: rolling 5s infinite;
+    }
+    .smooth-ring:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px #e6e5e3;
+        animation: rolling 5s infinite;
+    }
+
+    @keyframes rolling {
+        0%{
+            color: #f59e0b;
+        }
+        25%{
+            color: #10b981;
+        }
+        50%{
+            color: #3b82f6;
+        }
+        75%{
+            color: #ef4444;
+        }
+        100%{
+            color: #f59e0b;
+        }
+    }
+
+    .roll-back{
+        transition: all 0.3s ease-in-out;
+    }
+    .roll-back:hover{
+        transform: scale(1.1);
+        box-shadow: 0 0 0 3px transparent;
+        transition: all 0.3s ease-in-out;
+    }
+    .roll-back:hover svg{
+        stroke: #f5690b;
+    }
+    .roll-back svg{
+        stroke: #f59e0b;
+        transition: all 0.3s ease-in-out;
+    }
+
+
+</style>
